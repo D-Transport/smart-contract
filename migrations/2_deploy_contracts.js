@@ -1,5 +1,5 @@
-const DTransport = artifacts.require("./DTransport.sol");
+const DTransport = artifacts.require('./DTransport.sol');
 
-module.exports = function(deployer) {
+module.exports = function deploy(deployer) {
   deployer.deploy(DTransport);
 };

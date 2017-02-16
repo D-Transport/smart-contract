@@ -1,0 +1,33 @@
+{
+  "name": "smart-contract",
+  "version": "0.0.1",
+  "description": "The Ethereum solidity smart contracts for the D-Transport project",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D-Transport/smart-contract.git"
+  },
+  "keywords": [
+    "ethereum"
+  ],
+  "author": "Victor Le & Mathieu Porcel",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/D-Transport/smart-contract/issues"
+  },
+  "homepage": "https://github.com/D-Transport/smart-contract#readme",
+  "devDependencies": {
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx": "0.0.2",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0"
+  }
+}
