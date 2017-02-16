@@ -6,7 +6,7 @@ The Ethereum solidity smart contracts for the D-Transport project
 
 ```
 npm install -g truffle
-npm install -g testrpc
+npm install -g ethereumjs-testrpc
 ```
 
 ## Run the tests
