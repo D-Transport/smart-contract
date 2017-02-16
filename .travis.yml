@@ -21,4 +21,4 @@ before_script:
   - npm install -g truffle
 script:
 - testrpc &
-- truffle test
+- sleep 10 && truffle test
