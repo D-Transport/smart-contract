@@ -1,9 +1,11 @@
 var DTransport = artifacts.require("./DTransport.sol");
 
 contract('DTransport', function(accounts) {
-  it("should pass test WIP", function() {
+  it("should set admin the first account", function() {
     return DTransport.deployed().then(function(instance) {
-      assert.equal(10000, 10000, "test WIP");
+      return instance.admin.call();
+    }).then(function(admin) {
+      assert.equal(admin, accounts[0], "admin contract is not the account 1");
     });
   });
 });

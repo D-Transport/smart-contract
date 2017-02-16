@@ -3,9 +3,14 @@ pragma solidity ^0.4.4;
 /**
  * @title D-Transport
  * @author Victor Le <https://github.com/Coac>
- * @author Mathieu Porcel
+ * @author Mathieu Porcel <https://github.com/mathieu-porcel>
  */
 contract DTransport {
+
+	struct ValidationTerminal {
+		uint id;
+		uint location;
+	}
 
 	struct Validation {
 		uint id;
@@ -17,9 +22,17 @@ contract DTransport {
 		uint rndHash;
 	}
 
+	address public admin;
+
 	Validation[] public validations;
 
-	function validate() {
+	mapping(address => ValidationTerminal) public terminals;
+
+	function DTransport() {
+		admin = msg.sender;
+	}
+
+	function validate(address terminal) {
 
 	}
 
