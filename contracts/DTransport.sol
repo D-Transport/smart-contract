@@ -7,26 +7,35 @@ pragma solidity ^0.4.4;
  */
 contract DTransport {
 
+	struct Company {
+		string name;
+	}
+
 	struct ValidationTerminal {
-		uint id;
 		uint location;
+		address company;
 	}
 
 	struct Validation {
-		uint id;
-		uint location;
-		uint time;
-		uint vote;
-		uint crypted1;
-		uint crypted2;
-		uint rndHash;
+		uint date;
+		address terminal;
+	}
+
+	struct Authorization {
+		uint expiration;
+		address terminal;
+	}
+
+	struct User {
+		//mapping (uint => Authorization) authorizations;
+		//Permission permission;
+		address WIP;
 	}
 
 	address public admin;
-
-	Validation[] public validations;
-
 	mapping(address => ValidationTerminal) public terminals;
+	mapping(address => Company) public companies;
+	mapping(address => User) public users;
 
 	function DTransport() {
 		admin = msg.sender;
