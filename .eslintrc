@@ -10,5 +10,8 @@
     "assert": true,
     "contract": true,
     "artifacts": true
+  },
+  "rules": {
+    "arrow-body-style": ["error", "always"]
   }
 }
