@@ -23,19 +23,27 @@ contract DTransport {
 
 	struct Authorization {
 		uint expiration;
-		address terminal;
 	}
 
 	struct User {
-		//mapping (uint => Authorization) authorizations;
-		//Permission permission;
-		address WIP;
+		mapping (address => Authorization) authorizations;
+		Validation[] validations;
+		address addr; // Needed otherwise "Error: Internal type is not allowed for public state variables.""
 	}
 
 	address public admin;
 	mapping(address => ValidationTerminal) public terminals;
 	mapping(address => Company) public companies;
 	mapping(address => User) public users;
+
+	modifier onlyAdmin() {
+		if (msg.sender != admin) throw;
+		_;
+	}
+
+	function addTerminal (address terminal, uint location, address company) onlyAdmin {
+
+	}
 
 	function DTransport() {
 		admin = msg.sender;
