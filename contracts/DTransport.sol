@@ -73,7 +73,9 @@ contract DTransport {
 	 * @param name the company name
 	 */
 	function addCompany (address company, string name) onlyAdmin {
-
+		companies[company] = Company({
+        name: name
+    });
 	}
 
 	/**
