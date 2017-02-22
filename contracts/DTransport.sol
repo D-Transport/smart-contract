@@ -12,6 +12,7 @@ contract DTransport {
 	 */
 	struct Company {
 		string name;
+		string location;
 	}
 
 	/**
@@ -74,7 +75,8 @@ contract DTransport {
 	 */
 	function addCompany (address company, string name) onlyAdmin {
 		companies[company] = Company({
-        name: name
+        name: name,
+				location: 'location'
     });
 	}
 
