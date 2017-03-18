@@ -11,6 +11,7 @@ contract DTransport {
 	 * Transport company which provides validation terminal
 	 */
 	struct Company {
+		uint creationDate;
 		string name;
 		string location;
 	}
@@ -19,6 +20,7 @@ contract DTransport {
 	 * Validation terminal used to validate "ticket"
 	 */
 	struct ValidationTerminal {
+		uint creationDate;
 		uint location;
 		address company;
 	}
@@ -42,6 +44,7 @@ contract DTransport {
 	 * User who uses the transport service
 	 */
 	struct User {
+		uint creationDate;
 		mapping (address => Authorization) authorizations;
 		Validation[] validations;
 		address addr; // Needed otherwise "Error: Internal type is not allowed for public state variables.""
@@ -75,6 +78,7 @@ contract DTransport {
 	 */
 	function addCompany (address company, string name) onlyAdmin {
 		companies[company] = Company({
+				creationDate: now,
         name: name,
 				location: 'location'
     });
@@ -88,6 +92,7 @@ contract DTransport {
 	 */
 	function addTerminal (address terminal, uint location, address company) {
 		terminals[terminal] = ValidationTerminal({
+				creationDate: now,
         company: company,
 				location: location
     });

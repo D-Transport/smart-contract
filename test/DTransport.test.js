@@ -19,7 +19,7 @@ contract('DTransport', (accounts) => {
     }).then(() => {
       return instance.companies.call(accountTwo, { from: accountOne });
     }).then((company) => {
-      assert.equal(company[0], 'companyName', 'Company name is not equal as created');
+      assert.equal(company[1].toString(), 'companyName', 'Company name is not equal as created');
     });
   });
 
@@ -44,8 +44,8 @@ contract('DTransport', (accounts) => {
     }).then(() => {
       return instance.terminals.call(terminalAddress, { from: adminAddress });
     }).then((terminal) => {
-      assert.equal(terminal[0].toNumber(), 12, 'Location is not equal as created');
-      assert.equal(terminal[1], companyAddress, 'Company address is not equal as created');
+      assert.equal(terminal[1].toNumber(), 12, 'Location is not equal as created');
+      assert.equal(terminal[2], companyAddress, 'Company address is not equal as created');
     });
   });
 });
