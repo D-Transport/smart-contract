@@ -32,4 +32,20 @@ contract('DTransport', (accounts) => {
       assert.isDefined(e, 'transaction should have thrown');
     });
   });
+
+  it('should add a Terminal', () => {
+    let instance;
+    const adminAddress = accounts[0];
+    const terminalAddress = accounts[1];
+    const companyAddress = accounts[2];
+    return DTransport.deployed().then((inst) => {
+      instance = inst;
+      return instance.addTerminal(terminalAddress, 12, companyAddress, { from: adminAddress });
+    }).then(() => {
+      return instance.terminals.call(terminalAddress, { from: adminAddress });
+    }).then((terminal) => {
+      assert.equal(terminal[0].toNumber(), 12, 'Location is not equal as created');
+      assert.equal(terminal[1], companyAddress, 'Company address is not equal as created');
+    });
+  });
 });

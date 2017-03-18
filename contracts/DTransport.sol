@@ -87,7 +87,10 @@ contract DTransport {
 	 * @param company the company which own the terminal ethereum address
 	 */
 	function addTerminal (address terminal, uint location, address company) {
-
+		terminals[terminal] = ValidationTerminal({
+        company: company,
+				location: location
+    });
 	}
 
 	/**
