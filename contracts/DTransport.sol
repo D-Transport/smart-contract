@@ -45,9 +45,8 @@ contract DTransport {
 	 */
 	struct User {
 		uint creationDate;
+		mapping (uint => Validation) validations;
 		mapping (address => Authorization) authorizations;
-		Validation[] validations;
-		address addr; // Needed otherwise "Error: Internal type is not allowed for public state variables.""
 	}
 
 	/**
@@ -119,7 +118,7 @@ contract DTransport {
 	 * @notice Register as an User
 	 */
 	function register() {
-
+		users[msg.sender] = User(now);
 	}
 
 }

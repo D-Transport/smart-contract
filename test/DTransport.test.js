@@ -48,4 +48,17 @@ contract('DTransport', (accounts) => {
       assert.equal(terminal[2], companyAddress, 'Company address is not equal as created');
     });
   });
+
+  it('should register an user', () => {
+    let instance;
+    const user = accounts[0];
+    return DTransport.deployed().then((inst) => {
+      instance = inst;
+      return instance.register({ from: user });
+    }).then(() => {
+      return instance.users.call(user, { from: user });
+    }).then((returnedUser) => {
+      assert.isNotNull(returnedUser, 'Return user is null');
+    });
+  });
 });
