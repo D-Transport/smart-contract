@@ -61,4 +61,20 @@ contract('DTransport', (accounts) => {
       assert.isNotNull(returnedUser, 'Return user is null');
     });
   });
+
+  it('should give authorization', () => {
+    let instance;
+    const user = accounts[0];
+    const terminal = accounts[1];
+    return DTransport.deployed().then((inst) => {
+      instance = inst;
+      return instance.register({ from: user });
+    }).then(() => {
+      return instance.giveAuthorization(user, { from: terminal });
+    }).then(() => {
+      return instance.getAuthorizationDate.call(user, terminal, { from: user });
+    }).then((timestamp) => {
+      assert.isNotNull(timestamp.toNumber(), 'timestamp is not null');
+    });
+  });
 });

@@ -109,10 +109,10 @@ contract DTransport {
 
 	/**
 	 * @notice Used by an Terminal to give an User authorization to validate
-	 * @param User the user ethereum address
+	 * @param userAddr the user ethereum address
 	 */
-	function giveAuthorization (address User) {
-
+	function giveAuthorization (address userAddr) {
+		users[userAddr].authorizations[msg.sender] = Authorization(now);
 	}
 
 	/**
@@ -120,6 +120,16 @@ contract DTransport {
 	 */
 	function register() {
 		users[msg.sender] = User(now, 0);
+	}
+
+	/**
+	 * @notice Get authorization date from user given by a terminal
+	 * @param user the user ethereum address
+	 * @param terminal the terminal ethereum address
+	 * @return date
+	 */
+	function getAuthorizationDate(address user, address terminal) returns (uint) {
+		return users[user].authorizations[terminal].expiration;
 	}
 
 }
