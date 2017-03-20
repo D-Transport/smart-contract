@@ -45,6 +45,7 @@ contract DTransport {
 	 */
 	struct User {
 		uint creationDate;
+		uint validationCount;
 		mapping (uint => Validation) validations;
 		mapping (address => Authorization) authorizations;
 	}
@@ -118,7 +119,7 @@ contract DTransport {
 	 * @notice Register as an User
 	 */
 	function register() {
-		users[msg.sender] = User(now);
+		users[msg.sender] = User(now, 0);
 	}
 
 }
