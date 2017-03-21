@@ -103,4 +103,20 @@ contract('DTransport', (accounts) => {
       assert.equal(isSuccess, false, 'returned value is not false');
     });
   });
+
+  it('should validate', () => {
+    let instance;
+    const user = accounts[0];
+    const terminal = accounts[2];
+    return DTransport.deployed().then((inst) => {
+      instance = inst;
+      return instance.register({ from: user });
+    }).then(() => {
+      return instance.giveAuthorization(user, { from: terminal });
+    }).then(() => {
+      return instance.validate.call(terminal, { from: user });
+    }).then((isSuccess) => {
+      assert.equal(isSuccess, true, 'returned value is not true');
+    });
+  });
 });

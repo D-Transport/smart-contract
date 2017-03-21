@@ -117,7 +117,7 @@ contract DTransport {
 	 * @param userAddr the user ethereum address
 	 */
 	function giveAuthorization (address userAddr) {
-		users[userAddr].authorizations[msg.sender] = Authorization(now);
+		users[userAddr].authorizations[msg.sender] = Authorization(now + 10 minutes);
 	}
 
 	/**
