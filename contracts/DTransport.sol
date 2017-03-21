@@ -103,8 +103,13 @@ contract DTransport {
 	 * @dev Checks if the the user is authorized then create the entry
 	 * @param terminal the terminal ethereum address
 	 */
-	function validate(address terminal) {
-
+	function validate(address terminal) returns (bool) {
+		if(users[msg.sender].authorizations[terminal].expiration > now) {
+			users[msg.sender].validations[users[msg.sender].validationCount] = Validation(now, terminal);
+			users[msg.sender].validationCount += 1;
+			return true;
+		}
+		return false;
 	}
 
 	/**
