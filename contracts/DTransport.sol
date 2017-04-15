@@ -62,8 +62,13 @@ contract DTransport {
 		_;
 	}
 
+	address[] terminalsAddress;
 	mapping(address => ValidationTerminal) public terminals;
+
+	address[] companiesAddress;
 	mapping(address => Company) public companies;
+
+	address[] usersAddress;
 	mapping(address => User) public users;
 
 	function DTransport() {
@@ -77,6 +82,7 @@ contract DTransport {
 	 * @param name the company name
 	 */
 	function addCompany (address company, string name) onlyAdmin {
+		companiesAddress.push(company);
 		companies[company] = Company({
 				creationDate: now,
         name: name,
@@ -91,6 +97,7 @@ contract DTransport {
 	 * @param company the company which own the terminal ethereum address
 	 */
 	function addTerminal (address terminal, uint location, address company) {
+		terminalsAddress.push(terminal);
 		terminals[terminal] = ValidationTerminal({
 				creationDate: now,
         company: company,
@@ -124,6 +131,7 @@ contract DTransport {
 	 * @notice Register as an User
 	 */
 	function register() {
+		usersAddress.push(msg.sender);
 		users[msg.sender] = User(now, 0);
 	}
 
