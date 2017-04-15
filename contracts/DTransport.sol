@@ -131,8 +131,26 @@ contract DTransport {
 	 * @notice Register as an User
 	 */
 	function register() {
-		usersAddress.push(msg.sender);
-		users[msg.sender] = User(now, 0);
+		if(users[msg.sender].creationDate == 0) {
+			usersAddress.push(msg.sender);
+			users[msg.sender] = User(now, 0);
+		}
+	}
+
+	/**
+	 * @notice Get user by index
+	 * @return user
+	 */
+	function getUser(uint index) constant returns (address, uint, uint) {
+		return (usersAddress[index], users[usersAddress[index]].creationDate, users[usersAddress[index]].validationCount);
+	}
+
+	/**
+	 * @notice Get user count
+	 * @return userCount
+	 */
+	function getUsersCount() constant returns (uint) {
+		return usersAddress.length;
 	}
 
 	/**
