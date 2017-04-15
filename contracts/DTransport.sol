@@ -62,13 +62,13 @@ contract DTransport {
 		_;
 	}
 
-	address[] terminalsAddress;
+	address[] public terminalsAddress;
 	mapping(address => ValidationTerminal) public terminals;
 
-	address[] companiesAddress;
+	address[] public companiesAddress;
 	mapping(address => Company) public companies;
 
-	address[] usersAddress;
+	address[] public usersAddress;
 	mapping(address => User) public users;
 
 	function DTransport() {
