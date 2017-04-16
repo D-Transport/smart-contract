@@ -91,6 +91,22 @@ contract DTransport {
 	}
 
 	/**
+	 * @notice Get Company by index
+	 * @return user
+	 */
+	function getCompany(uint index) constant returns (address, uint, string, string) {
+		return (companiesAddress[index], companies[companiesAddress[index]].creationDate, companies[companiesAddress[index]].name, companies[companiesAddress[index]].location);
+	}
+
+	/**
+	 * @notice Get Companies count
+	 * @return userCount
+	 */
+	function getCompanyCount() constant returns (uint) {
+		return companiesAddress.length;
+	}
+
+	/**
 	 * @notice Add a terminal to the system
 	 * @param terminal the terminal ethereum address
 	 * @param location the terminal location
@@ -103,6 +119,22 @@ contract DTransport {
         company: company,
 				location: location
     });
+	}
+
+	/**
+	 * @notice Get Terminal by index
+	 * @return user
+	 */
+	function getTerminal(uint index) constant returns (address, uint, uint, address) {
+		return (terminalsAddress[index], terminals[terminalsAddress[index]].creationDate, terminals[terminalsAddress[index]].location, terminals[terminalsAddress[index]].company);
+	}
+
+	/**
+	 * @notice Get Terminals count
+	 * @return userCount
+	 */
+	function getTerminalCount() constant returns (uint) {
+		return terminalsAddress.length;
 	}
 
 	/**
