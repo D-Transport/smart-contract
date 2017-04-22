@@ -191,7 +191,15 @@ contract DTransport {
 	 * @param terminal the terminal ethereum address
 	 * @return date
 	 */
-	function getAuthorizationDate(address user, address terminal) returns (uint) {
+	function getAuthorizationDate(address user, address terminal) constant returns (uint) {
+		if(users[user].creationDate == 0) {
+			return 1;
+		}
+
+		if(users[user].authorizations[terminal].expiration == 0) {
+			return 2;
+		}
+
 		return users[user].authorizations[terminal].expiration;
 	}
 
