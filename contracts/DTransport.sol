@@ -203,4 +203,15 @@ contract DTransport {
 		return users[user].authorizations[terminal].expiration;
 	}
 
+	function getValidation(address user, uint index) constant returns (uint, address) {
+		if(users[user].creationDate == 0) {
+			return (1, 0x0);
+		}
+
+		if(index >= users[user].validationCount) {
+			return (2, 0x0);
+		}
+
+		return (users[user].validations[index].date, users[user].validations[index].terminal);
+	}
 }
