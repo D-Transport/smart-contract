@@ -85,8 +85,8 @@ contract('DTransport', (accounts) => {
     return DTransport.deployed().then((inst) => {
       instance = inst;
       return instance.getAuthorizationDate.call(user, terminal, { from: user });
-    }).then((timestamp) => {
-      assert.equal(timestamp.toNumber(), 0, 'timestamp is not null');
+    }).then((returnCode) => {
+      assert.equal(returnCode.toNumber(), 1, 'returnCode is not 1');
     });
   });
 
